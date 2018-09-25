@@ -1,5 +1,5 @@
 <template lang="pug">
-  el-menu.g-menu(default-active='/', @open='handleOpen', @select='handleSelect', background-color='#13191E', text-color='#fff', active-text-color='#1890FF', :router="true", :unique-opened="true")
+  el-menu.g-menu(:default-active='currPath', @open='handleOpen', @select='handleSelect', background-color='#13191E', text-color='#fff', active-text-color='#1890FF', :router="true", :unique-opened="true")
     template(v-for="item, index in menu")
       el-submenu(:index='item.path', v-if="item.children")
         template(slot='title')
@@ -27,12 +27,12 @@
     },
     data() {
       return {
-        menu: []
+        menu: [],
+        currPath: this.$route.path
       }
     },
     created() {
       this.menu = this.generateMenu(this.routers);
-      console.log(111, JSON.stringify(this.menu))
     },
     methods: {
       handleOpen(url) {
