@@ -1,0 +1,110 @@
+// 引入基础变量
+@import 'reset';
+// 框架样式
+@import 'common';
+
+// 第三方样式
+@import '../fonts/iconfont.css'; // 字体图标
+
+// 系统全局设置
+//-------------------------------
+.font(@size, @height) {
+  font: @size/@height Tahoma, Verdana, Arial, Roboto, 'Heiti SC', 'Hiragino Sans GB', '\5FAE\8F6F\96C5\9ED1', '\5b8b\4f53', sans-serif;
+}
+// 基础像素
+//-------------------------------
+@F0: 10px;
+@F1: 11px;
+@F2: 12px;
+@F3: 13px;
+@F4: 14px;
+@F5: 15px;
+@F6: 16px;
+@F7: 17px;
+@F8: 18px;
+@F9: 19px;
+@F10: 20px;
+@F11: 21px;
+@F12: 22px;
+@F13: 23px;
+
+// 基础颜色
+//-------------------------------
+@white: #fff;
+@C0: #fafafa;
+@C1: #f0f0f0;
+@C2: #dcdcdc;
+@C3: #cccccc;
+@C4: #999999;
+@C5: #666666;
+@C6: #333333;
+@C7: #000000;
+@C9: #f6f6f6;
+@C20: #fc687c;
+@C21: #ff4d61;
+@C22: #477ed8;
+@C23: #5ccccc;
+@C24: #3bbc9c;
+@C25: #ff6c00;
+
+// 主题颜色
+@themeColor: #2E3F56;
+@themeTextColor: #ABB5C3;
+@themeActiveColor: #061421;
+@themeHoverColor: #19283A;
+@themeActiveTextColor: #409EFF;
+@UC1: #F5F7FA;
+@UC2: #66B1FF;
+@UC3: #3A8EE6;
+@UC4: #111111;
+@UC5: #f1f1f1;
+@UC6: #EBEEF5;
+@UC7: #f0f9eb;
+@UC8: #FDF5E6;
+@UC9: #FEB933;
+
+
+// 主题颜色
+//-------------------------------
+
+
+
+// 组件设置
+//-------------------------------
+.flex(@value){
+  -webkit-box-flex: @value;
+              flex: @value;
+      -webkit-flex: @value;
+}
+.flexBox(){
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.flexCenter(){
+  .flexBox();
+  align-items: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+}
+.flexColumn(){
+  .flexBox();
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.border1px(@color, @width){
+  content: "";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid @color;
+  border-width: @width;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  box-sizing: border-box;
+}
