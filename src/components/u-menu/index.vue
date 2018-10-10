@@ -14,7 +14,7 @@
 </template>
 
 <style>
-  .g-menu{width: 210px;position: fixed;left: 0;top: 70px;bottom: 0;}
+  .g-menu{position: absolute;left: 0;top: 70px;bottom: 0;width: 210px;}
 </style>
 
 <script>
