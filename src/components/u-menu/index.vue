@@ -1,5 +1,5 @@
 <template lang="pug">
-  el-menu.g-menu(:default-active='currPath', @open='handleOpen', @select='handleSelect', background-color='#13191E', text-color='#fff', active-text-color='#1890FF', :router="true", :unique-opened="true")
+  el-menu.g-menu(:default-active='$route.path', active-text-color='#1890FF', :router="true", :unique-opened="true")
     template(v-for="item, index in menu")
       el-submenu(:index='item.path', v-if="item.children")
         template(slot='title')
@@ -14,7 +14,7 @@
 </template>
 
 <style>
-  .g-menu{position: absolute;left: 0;top: 70px;bottom: 0;width: 210px;}
+  .g-menu{position: absolute;left: 0;top: 70px;bottom: 0;width: 210px;background: #fff;}
 </style>
 
 <script>
@@ -27,20 +27,13 @@
     },
     data() {
       return {
-        menu: [],
-        currPath: this.$route.path
+        menu: []
       }
     },
     created() {
       this.menu = this.generateMenu(this.routers);
     },
     methods: {
-      handleOpen(url) {
-        //this.$router.push({ path: url });
-      },
-      handleSelect(index, indexPath) {
-        console.log(index, indexPath)
-      },
       /*
       * 递归返回侧边栏要显示的菜单
       * @param routerMap

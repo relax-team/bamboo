@@ -5,21 +5,24 @@
       span 后台管理系统
 
     .userInfo
-      //- http://q.qlogo.cn/g?b=qq&nk=644569226&s=100
-      img.avatar(src='@/assets/images/avatar_default.png')
-      .options
-        el-button(type='warning', @click='logout', round) 退出
+      span 欢迎您，bamboo
+      el-dropdown(@command="handleCommand")
+        .el-dropdown-link
+          //- @/assets/images/avatar_default.png
+          img.avatar(src='http://q.qlogo.cn/g?b=qq&nk=644569226&s=100')
+        el-dropdown-menu(slot='dropdown')
+          el-dropdown-item(command="changePassword") 修改密码
+          el-dropdown-item(command='logout') 退出
 
 </template>
 
 <style>
-  .g-header{height: 70px;display: flex;align-items: center;justify-content: space-between;background: #13191E;}
-  .logo{display: flex;align-items: center;flex: 1;}
+  .g-header{height: 70px;border-bottom: 1px solid #f2f2f2;display: flex;align-items: center;justify-content: space-between;background: linear-gradient(to right, #338BF8 , #4D98F7);color: #fff;}
+  .logo{display: flex;align-items: center;flex: 1}
   .logo img{height: 40px;margin: 0 20px;}
 
   .userInfo{display: flex;align-items: center;}
-  .options{margin: 0 20px;}
-  .avatar{width: 40px;height: 40px;border-radius: 50%;}
+  .avatar{width: 40px;height: 40px;border-radius: 50%;margin: 0 20px;}
 </style>
 
 <script>
@@ -33,12 +36,16 @@
       }
     },
     methods: {
-      onSearch(){
-
-      },
-      async logout(){
-        await this.$store.dispatch('user/logout');
-        this.$router.push({path: '/login'});
+      async handleCommand(command){
+        switch (command) {
+          case 'changePassword':
+            this.$router.push({path: '/setting/user/changePassword'});
+            break;
+          case 'logout':
+            await this.$store.dispatch('user/logout');
+            this.$router.push({path: '/login'});
+            break;
+        }
       }
     }
   }

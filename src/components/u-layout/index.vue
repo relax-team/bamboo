@@ -7,7 +7,7 @@
 </template>
 
 <style>
-  .g-main{position: absolute;left: 210px;right: 0;top: 70px;bottom: 0;background-color: #CEE4EF;padding: 15px;}
+  .g-main{position: absolute;left: 210px;right: 0;top: 70px;bottom: 0;background-color: #fafafa;padding: 15px;}
 </style>
 
 <script>
