@@ -22,8 +22,6 @@ module.exports = {
         "PORT": env.dev.PORT,
         "NODE_ENV": env.dev.NODE_ENV
       },
-      "out_file": "null",
-      "error_file": "null",
       "merge_logs": false,    //不使用进程ID作为文件后缀
       "log_date_format": "YYYY-MM-DD HH-mm-ss"
     }
