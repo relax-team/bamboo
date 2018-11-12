@@ -42,10 +42,12 @@
         routerMap.concat().map(item => {
           //根据meta过滤，不返回hidden的菜单
           if (item.meta) {
-            if (item.meta.hidden) return;
-            return menu.push(this.returnItem(item, parent));
+            const _item = this.returnItem(item, parent);
+            _item && menu.push(_item);
+            return _item;
           }
 
+          //无meta，有子菜单
           if (item.children && item.children[0]) {
             return this.generateMenu(item.children, {path: item.path}, menu);
           }
@@ -55,6 +57,7 @@
       },
       //每一项menu的数据结构
       returnItem(item, parent = {}) {
+        if (item.meta.hidden) return;
         let res = {
           path: [parent.path, item.path].filter(v => v).join('/'),
           meta: item.meta
@@ -62,7 +65,7 @@
         if (item.children && item.children[0]) {
           res.children = item.children.map(v => {
             return this.returnItem(v, res);
-          });
+          }).filter(v => v);
         }
         return res;
       }
